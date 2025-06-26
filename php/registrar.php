@@ -34,18 +34,13 @@ if (!empty($_POST['registrar'])) {
             
             mysqli_stmt_bind_param($stmt,"ssssss", $nombre, $email, $password_encriptada, $telefono, $tipo_usuario, $fecha_registro);
             if (mysqli_execute($stmt)) {
-                echo "<script>";
-                echo "alert('felicidades, has sido registrado con éxito! Ahora inicia sesion.');"; 
-                echo "window.location='../php/iniciar_sesion.php';"; 
-                echo "</script>";
+                echo "<script>alert('felicidades, has sido registrado con éxito! Ahora inicia sesion.'); 
+                window.location='../php/iniciar_sesion.php';</script>";
                 mysqli_stmt_close($stmt);
                 mysqli_close($conex);
                 exit(); 
             }else {
-                echo "<script>";
-                echo "alert('error al registrarse');"; 
-                //echo "window.location='../html/index.html';"; 
-                echo "</script>";
+                echo "<script>alert('error al registrarse'); window.location='../php/registrarse.php';</script>";
             } 
     }
     

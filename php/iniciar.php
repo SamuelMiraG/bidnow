@@ -7,9 +7,13 @@
 </head>
 <body>
     <?php
+    include("../php/conexion.php");
+
     session_start();
 
-    include("../php/conexion.php");
+    if (isset($_SESSION['user_id'])) {
+        header("Location: ../php/dashboard.php");
+    }
 
     if (!empty($_POST)) {
         $email= trim($_POST['email']);
@@ -26,10 +30,10 @@
 
             if (password_verify($password_ingresada, $pass_al)){
 
-                $_SESSION['user_id'] = $user_data['usuario_id'];
+                $_SESSION['user_id'] = $usuario['usuario_id'];
                 echo "<script>";
                 echo "alert('bienvenido');"; 
-                echo "window.location='../html/index.html';"; 
+                echo "window.location='../php/dashboard.php';"; 
                 echo "</script>";
                 exit();
 
